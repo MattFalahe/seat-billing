@@ -3,6 +3,7 @@
 namespace Denngarr\Seat\Billing;
 
 use Denngarr\Seat\Billing\Commands\BillingUpdateLive;
+use Denngarr\Seat\Billing\database\seeders\ScheduleSeeder;
 use Denngarr\Seat\Billing\Jobs\GenerateInvoices;
 use Denngarr\Seat\Billing\Jobs\ProcessTaxPayment;
 use Denngarr\Seat\Billing\Models\CharacterBill;
@@ -73,6 +74,8 @@ class BillingServiceProvider extends AbstractSeatPlugin
             __DIR__ . '/Config/billing.permissions.php',
             'billing'
         );
+
+        $this->registerDatabaseSeeders(ScheduleSeeder::class);
     }
 
     public function add_migrations()
